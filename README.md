@@ -25,7 +25,7 @@ node index
 
 ## History
 Still currently maintained and updated.
-* 1.0.0 Initial Release
+* 0.1.0 Initial Release
 
 ## Credits
 Google
