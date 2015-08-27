@@ -1,0 +1,14 @@
+{
+  "name": "google_directions",
+  "version": "1.0.0",
+  "description": "Node's API wrapper for simplifying calls to Google Directions API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "console.log(\"Running\");"
+  },
+  "keywords": [
+    "googleDirections"
+  ],
+  "author": "Rohan Doshi",
+  "license": "MIT"
+}
