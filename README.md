@@ -15,9 +15,9 @@ https://console.developers.google.com/flows/enableapi?apiid=directions_backend&k
 ## Usage
 Add the following code and fill in the template for the JSON object. At minimum, you must include an origin, destination, and API key. All other parameters are optional:
 
-‘’’
+```javascript
 google_directions = require(‘google_directions’);
-‘’’
+```
 
 ## History
 Still currently maintained.
