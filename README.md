@@ -1,6 +1,6 @@
 <snippet>
-  <content><![CDATA[
-# ${1:google_directions}
+  <content>
+# google_directions
 This is the simplest way to get directions from the Google Directions API. At minimum, an origin, destination, and API key is required. Find more information about the API here:
 https://developers.google.com/maps/documentation/directions/intro
 
@@ -23,6 +23,5 @@ Still currently maintained.
 Google
 ## License
 MIT License
-]]></content>
-  <tabTrigger>readme</tabTrigger>
+</content>
 </snippet>
