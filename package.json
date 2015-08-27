@@ -1,14 +1,24 @@
 {
   "name": "google_directions",
   "version": "1.0.0",
-  "description": "Node's API wrapper for simplifying calls to Google Directions API.",
+  "description": "Simplest way to call Google Directiosns API (Node Wrapper)",
   "main": "index.js",
   "scripts": {
-    "test": "console.log(\"Running\");"
+    "test": "console.log('Hello World')"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/RohanDoshi2018/google_directions.git"
   },
   "keywords": [
-    "googleDirections"
+    "google",
+    "google_directions",
+    "directions",
+    "maps"
   ],
-  "author": "Rohan Doshi",
-  "license": "MIT"
+  "author": "Rohan Doshi <rohandoshiga@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RohanDoshi2018/google_directions/issues"
+  }
 }
