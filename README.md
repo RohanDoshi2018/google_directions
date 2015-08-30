@@ -5,7 +5,7 @@ This NPM Module is the simplest interface for asynchronously querying the Google
 
 ## Installation
 ```javascript
-npm install —-save google_directions
+npm i google_directions
 ```
 **Get a Google API Key**
 
@@ -38,7 +38,7 @@ var params = {
 
 There are six main methods to choose from.
 
-**Raw Google Direction API Response (JSON)**
+**Raw Google Direction API Response (JSON):**
 ```javascript
 // get the raw Google Directions API response as JSON object
 map.getDirections(params, function (err, data) {
@@ -49,7 +49,7 @@ map.getDirections(params, function (err, data) {
 	console.log(data);
 });
 ```
-**Navigation Steps (JSON)**
+**Navigation Steps (JSON):**
 ```javascript
 // get navigation steps as JSON object
 map.getDirectionSteps(params, function (err, steps){
@@ -73,7 +73,7 @@ map.getDirectionSteps(params, function (err, steps){
 });
 ```
 
-**Total Distance (String)**
+**Total Distance (String):**
 ```javascript
 // get total distance as string
 map.getDistance(params, function (err, data) {
@@ -85,7 +85,7 @@ map.getDistance(params, function (err, data) {
 });
 ```
 
-**Total Duration (String)**
+**Total Duration (String):**
 ```javascript
 // get total duration as string
 map.getDuration(params, function (err, data) {
@@ -97,7 +97,7 @@ map.getDuration(params, function (err, data) {
 });
 ```
 
-**Starting Address (String)**
+**Starting Address (String):**
 ```javascript
 // get the starting address as string
 map.getOriginAddress(params, function (err, data) {
@@ -109,7 +109,7 @@ map.getOriginAddress(params, function (err, data) {
 });
 ```
 
-**Destination Address (String)**
+**Destination Address (String):**
 ```javascript
 // get the destination address as string
 map.getDestinationAddress(params, function (err, data) {
