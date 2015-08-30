@@ -22,8 +22,8 @@ function validateInput(params, cb) {
 
 module.exports = {
 	getDirections: function(params, cb) {
-		// validate inputs to npm module
-		validateInput(params, cb);
+	// validate inputs to npm module
+	validateInput(params, cb);
 
 		// build query URL
 	var url = "https://maps.googleapis.com/maps/api/directions/json?" + qs.stringify(params);
@@ -35,8 +35,8 @@ module.exports = {
 
 	},
 	getDirectionSteps: function(params, cb) {
-		// validate inputs to npm module
-		validateInput(params, cb);
+	// validate inputs to npm module
+	validateInput(params, cb);
 
 		// build query URL
 	var url = "https://maps.googleapis.com/maps/api/directions/json?" + qs.stringify(params);
@@ -47,8 +47,8 @@ module.exports = {
 
 	},
 	getDistance: function(params, cb) {
-		// validate inputs to npm module
-		validateInput(params, cb);
+	// validate inputs to npm module
+	validateInput(params, cb);
 
 		// build query URL
 	var url = "https://maps.googleapis.com/maps/api/directions/json?" + qs.stringify(params);
@@ -60,8 +60,8 @@ module.exports = {
 
 	},
 	getDuration: function(params, cb) {
-		// validate inputs to npm module
-		validateInput(params, cb);
+	// validate inputs to npm module
+	validateInput(params, cb);
 
 		// build query URL
 	var url = "https://maps.googleapis.com/maps/api/directions/json?" + qs.stringify(params);
@@ -73,8 +73,8 @@ module.exports = {
 
 	},
 	getOriginAddress: function(params, cb) {
-		// validate inputs to npm module
-		validateInput(params, cb);
+	// validate inputs to npm module
+	validateInput(params, cb);
 
 		// build query URL
 	var url = "https://maps.googleapis.com/maps/api/directions/json?" + qs.stringify(params);
@@ -86,8 +86,8 @@ module.exports = {
 
 	},
 	getDestinationAddress: function(params, cb) {
-		// validate inputs to npm module
-		validateInput(params, cb);
+	// validate inputs to npm module
+	validateInput(params, cb);
 
 		// build query URL
 	var url = "https://maps.googleapis.com/maps/api/directions/json?" + qs.stringify(params);
