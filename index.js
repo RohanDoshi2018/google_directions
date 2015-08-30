@@ -38,7 +38,7 @@ module.exports = {
 		// validate inputs to npm module
 		validateInput(params, cb);
 
-			// build query URL
+		// build query URL
 		var url = "https://maps.googleapis.com/maps/api/directions/json?" + qs.stringify(params);
 		// make request to google server
 		request(url, function(err, res, body) {
@@ -50,7 +50,7 @@ module.exports = {
 		// validate inputs to npm module
 		validateInput(params, cb);
 
-			// build query URL
+		// build query URL
 		var url = "https://maps.googleapis.com/maps/api/directions/json?" + qs.stringify(params);
 
 		// make request to google server
@@ -63,7 +63,7 @@ module.exports = {
 		// validate inputs to npm module
 		validateInput(params, cb);
 
-			// build query URL
+		// build query URL
 		var url = "https://maps.googleapis.com/maps/api/directions/json?" + qs.stringify(params);
 
 		// make request to google server
@@ -76,7 +76,7 @@ module.exports = {
 		// validate inputs to npm module
 		validateInput(params, cb);
 
-			// build query URL
+		// build query URL
 		var url = "https://maps.googleapis.com/maps/api/directions/json?" + qs.stringify(params);
 
 		// make request to google server
@@ -89,7 +89,7 @@ module.exports = {
 		// validate inputs to npm module
 		validateInput(params, cb);
 
-			// build query URL
+		// build query URL
 		var url = "https://maps.googleapis.com/maps/api/directions/json?" + qs.stringify(params);
 
 		// make request to google server
