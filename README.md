@@ -138,7 +138,7 @@ map.getDestinationAddress(params, function (err, data) {
 
 ## History
 Still currently maintained and updated.
-* 0.2.0 Initial Release
+* 0.6.0
 
 ## Credits
 Google
