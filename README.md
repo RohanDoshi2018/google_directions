@@ -3,7 +3,7 @@ google_directions
 
 This is the simplest interface for getting Google directions. 
 
-This NPM Module serves as a Node Wrapper for asynchronously querying the Google Directions API (https://developers.google.com/maps/documentation/directions/intro). Find more information about the API here: https://developers.google.com/maps/documentation/directions/intro
+This NPM Module serves as a Node Wrapper for asynchronously querying the Google Directions API (https://developers.google.com/maps/documentation/directions/intro). Find more information about the API here: https://developers.google.com/maps/documentation/directions/intro.
 
 ## Installation
 ```javascript
@@ -12,11 +12,12 @@ npm install —-save google_directions
 **Get a Google API Key**
 https://console.developers.google.com/flows/enableapi?apiid=directions_backend&keyType=SERVER_SIDE
 
-* Select/create a project
+* Select/Create a Project
 * Enable Directions API
-* Generate Key (See Credentials Tab)
+* Generate a Key (See the Credentials Tab)
 
 ## Usage
+MUST include this. [Parameter Details]<#parameters>.
 ```javascript
 var map = require('google_directions');
 
@@ -34,8 +35,9 @@ var params = {
 	region: "",
 };
 ```
-**API**
-
+**API Methods**
+There are six main methods to choose from.
+1. Raw Google Direction API Response <JSON>
 ```javascript
 // get the raw Google Directions API response as JSON object
 map.getDirections(params, function (err, data) {
@@ -45,8 +47,10 @@ map.getDirections(params, function (err, data) {
 	}
 	console.log(data);
 });
-
-// get navigation steps in JSON object
+```
+2. Navigation Steps <JSON>
+```javascript
+// get navigation steps as JSON object
 map.getDirectionSteps(params, function (err, steps){
 	if (err) {
 		console.log(err);
@@ -58,7 +62,7 @@ map.getDirectionSteps(params, function (err, steps){
 	var stepCounter = 1;
 	steps.forEach(function(stepObj) {
 		var instruction = stepObj.html_instructions;
-		instruction = instruction.replace(/<[^>]*>/g, ""); //regex to remove html tags
+		instruction = instruction.replace(/<[^>]*>/g, ""); // regex to remove html tags
 		var distance = stepObj.distance.text;
 		var duration = stepObj.duration.text;
 		output += "Step " + stepCounter + ": " + instruction + " ("+ distance +"/"+ duration+")\n";
@@ -66,7 +70,10 @@ map.getDirectionSteps(params, function (err, steps){
 	});	
 	console.log(output);
 });
+```
 
+3. Total Distance <String>
+```javascript
 // get total distance as string
 map.getDistance(params, function (err, data) {
 	if (err) {
@@ -75,7 +82,10 @@ map.getDistance(params, function (err, data) {
 	}
 	console.log(data);
 });
+```
 
+4. Total Duration <String>
+```javascript
 // get total duration as string
 map.getDuration(params, function (err, data) {
 	if (err) {
@@ -84,7 +94,10 @@ map.getDuration(params, function (err, data) {
 	}
 	console.log(data);
 });
+```
 
+5. Starting Address <String>
+```javascript
 // get the starting address as string
 map.getOriginAddress(params, function (err, data) {
 	if (err) {
@@ -93,7 +106,10 @@ map.getOriginAddress(params, function (err, data) {
 	}
 	console.log(data);
 });
+```
 
+6. Destination Address <String>
+```javascript
 // get the destination address as string
 map.getDestinationAddress(params, function (err, data) {
 	if (err) {
@@ -104,7 +120,7 @@ map.getDestinationAddress(params, function (err, data) {
 });
 ```
 
-##Parameter Details
+##<a name=“parameters”></a>Parameters
 * origin: staring location
 * destination: ending location
 * key: your Google-generated API key
