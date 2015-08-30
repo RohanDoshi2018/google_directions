@@ -1,7 +1,7 @@
 google_directions
 =========
 
-This NPM Module is the simplest interface for asynchronously querying the Google Directions API (https://developers.google.com/maps/documentation/directions/intro) via Node. Find more information about the API here: https://developers.google.com/maps/documentation/directions/intro.
+This NPM Module is the simplest interface for asynchronously querying the Google Directions API (https://developers.google.com/maps/documentation/directions/intro) via Node.
 
 ## Installation
 ```javascript
