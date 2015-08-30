@@ -1,9 +1,7 @@
 google_directions
 =========
 
-This is the simplest interface for getting Google directions. 
-
-This NPM Module serves as a Node Wrapper for asynchronously querying the Google Directions API (https://developers.google.com/maps/documentation/directions/intro). Find more information about the API here: https://developers.google.com/maps/documentation/directions/intro.
+This NPM Module is the simplest interface for asynchronously querying the Google Directions API (https://developers.google.com/maps/documentation/directions/intro) via Node. Find more information about the API here: https://developers.google.com/maps/documentation/directions/intro.
 
 ## Installation
 ```javascript
@@ -17,7 +15,7 @@ https://console.developers.google.com/flows/enableapi?apiid=directions_backend&k
 * Generate a Key (See the Credentials Tab)
 
 ## Usage
-MUST include this. [Parameter Details]<#parameters>.
+MUST include this. [Parameter Details](#parameters).
 ```javascript
 var map = require('google_directions');
 
@@ -36,8 +34,10 @@ var params = {
 };
 ```
 **API Methods**
+
 There are six main methods to choose from.
-1. Raw Google Direction API Response <JSON>
+
+### 1) Raw Google Direction API Response <JSON>
 ```javascript
 // get the raw Google Directions API response as JSON object
 map.getDirections(params, function (err, data) {
@@ -48,7 +48,7 @@ map.getDirections(params, function (err, data) {
 	console.log(data);
 });
 ```
-2. Navigation Steps <JSON>
+### 2) Navigation Steps <JSON>
 ```javascript
 // get navigation steps as JSON object
 map.getDirectionSteps(params, function (err, steps){
@@ -72,7 +72,7 @@ map.getDirectionSteps(params, function (err, steps){
 });
 ```
 
-3. Total Distance <String>
+### 3) Total Distance <String>
 ```javascript
 // get total distance as string
 map.getDistance(params, function (err, data) {
@@ -84,7 +84,7 @@ map.getDistance(params, function (err, data) {
 });
 ```
 
-4. Total Duration <String>
+### 4) Total Duration <String>
 ```javascript
 // get total duration as string
 map.getDuration(params, function (err, data) {
@@ -96,7 +96,7 @@ map.getDuration(params, function (err, data) {
 });
 ```
 
-5. Starting Address <String>
+### 5) Starting Address <String>
 ```javascript
 // get the starting address as string
 map.getOriginAddress(params, function (err, data) {
@@ -108,7 +108,7 @@ map.getOriginAddress(params, function (err, data) {
 });
 ```
 
-6. Destination Address <String>
+### 6) Destination Address <String>
 ```javascript
 // get the destination address as string
 map.getDestinationAddress(params, function (err, data) {
