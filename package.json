@@ -1,6 +1,6 @@
 {
   "name": "google_directions",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Simplest Way to Asynchronously Call the Google Directions API With Node",
   "main": "index.js",
   "scripts": {
