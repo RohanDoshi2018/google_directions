@@ -22,80 +22,80 @@ function validateInput(params, cb) {
 
 module.exports = {
 	getDirections: function(params, cb) {
-	// validate inputs to npm module
-	validateInput(params, cb);
+		// validate inputs to npm module
+		validateInput(params, cb);
 
 		// build query URL
-	var url = "https://maps.googleapis.com/maps/api/directions/json?" + qs.stringify(params);
+		var url = "https://maps.googleapis.com/maps/api/directions/json?" + qs.stringify(params);
 
-	// make request to google server
-	request(url, function(err, res, body) {
-		return cb(err, JSON.parse(body));
-	});
+		// make request to google server
+		request(url, function(err, res, body) {
+			return cb(err, JSON.parse(body));
+		});
 
 	},
 	getDirectionSteps: function(params, cb) {
-	// validate inputs to npm module
-	validateInput(params, cb);
+		// validate inputs to npm module
+		validateInput(params, cb);
 
-		// build query URL
-	var url = "https://maps.googleapis.com/maps/api/directions/json?" + qs.stringify(params);
-	// make request to google server
-	request(url, function(err, res, body) {
-		return cb(err, JSON.parse(body).routes[0].legs[0].steps);
-	});
+			// build query URL
+		var url = "https://maps.googleapis.com/maps/api/directions/json?" + qs.stringify(params);
+		// make request to google server
+		request(url, function(err, res, body) {
+			return cb(err, JSON.parse(body).routes[0].legs[0].steps);
+		});
 
 	},
 	getDistance: function(params, cb) {
-	// validate inputs to npm module
-	validateInput(params, cb);
+		// validate inputs to npm module
+		validateInput(params, cb);
 
-		// build query URL
-	var url = "https://maps.googleapis.com/maps/api/directions/json?" + qs.stringify(params);
+			// build query URL
+		var url = "https://maps.googleapis.com/maps/api/directions/json?" + qs.stringify(params);
 
-	// make request to google server
-	request(url, function(err, res, body) {
-		return cb(err, JSON.parse(body).routes[0].legs[0].distance.text);
-	});
+		// make request to google server
+		request(url, function(err, res, body) {
+			return cb(err, JSON.parse(body).routes[0].legs[0].distance.text);
+		});
 
 	},
 	getDuration: function(params, cb) {
-	// validate inputs to npm module
-	validateInput(params, cb);
+		// validate inputs to npm module
+		validateInput(params, cb);
 
-		// build query URL
-	var url = "https://maps.googleapis.com/maps/api/directions/json?" + qs.stringify(params);
+			// build query URL
+		var url = "https://maps.googleapis.com/maps/api/directions/json?" + qs.stringify(params);
 
-	// make request to google server
-	request(url, function(err, res, body) {
-		return cb(err, JSON.parse(body).routes[0].legs[0].duration.text);
-	});
+		// make request to google server
+		request(url, function(err, res, body) {
+			return cb(err, JSON.parse(body).routes[0].legs[0].duration.text);
+		});
 
 	},
 	getOriginAddress: function(params, cb) {
-	// validate inputs to npm module
-	validateInput(params, cb);
+		// validate inputs to npm module
+		validateInput(params, cb);
 
-		// build query URL
-	var url = "https://maps.googleapis.com/maps/api/directions/json?" + qs.stringify(params);
+			// build query URL
+		var url = "https://maps.googleapis.com/maps/api/directions/json?" + qs.stringify(params);
 
-	// make request to google server
-	request(url, function(err, res, body) {
-		return cb(err, JSON.parse(body).routes[0].legs[0].start_address);
-	});
+		// make request to google server
+		request(url, function(err, res, body) {
+			return cb(err, JSON.parse(body).routes[0].legs[0].start_address);
+		});
 
 	},
 	getDestinationAddress: function(params, cb) {
-	// validate inputs to npm module
-	validateInput(params, cb);
+		// validate inputs to npm module
+		validateInput(params, cb);
 
-		// build query URL
-	var url = "https://maps.googleapis.com/maps/api/directions/json?" + qs.stringify(params);
+			// build query URL
+		var url = "https://maps.googleapis.com/maps/api/directions/json?" + qs.stringify(params);
 
-	// make request to google server
-	request(url, function(err, res, body) {
-		return cb(err, JSON.parse(body).routes[0].legs[0].end_address);
-	});
+		// make request to google server
+		request(url, function(err, res, body) {
+			return cb(err, JSON.parse(body).routes[0].legs[0].end_address);
+		});
 
 	}
 };
