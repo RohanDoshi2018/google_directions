@@ -1,33 +1,130 @@
 google_directions
 =========
 
-This is the simplest way to get directions from the Google Directions API. At minimum, an origin, destination, and API key is required. Find more information about the API here:
-https://developers.google.com/maps/documentation/directions/intro
+This is the simplest interface for getting Google directions. 
+
+This NPM Module serves as a Node Wrapper for asynchronously querying the Google Directions API (https://developers.google.com/maps/documentation/directions/intro). Find more information about the API here: https://developers.google.com/maps/documentation/directions/intro
 
 ## Installation
-1. Install in correct local directory:
 ```javascript
 npm install —-save google_directions
 ```
-2. Get a KEY from Google. You need to create or select a project in the  Google Developers Console and enable the API. Get started at this link:
+**Get a Google API Key**
 https://console.developers.google.com/flows/enableapi?apiid=directions_backend&keyType=SERVER_SIDE
-3. Then, go to the “Credentials” section and generate an access API key.
+
+* Select/create a project
+* Enable Directions API
+* Generate Key (See Credentials Tab)
 
 ## Usage
-1. Add the following code and fill in the template for the JSON object. At minimum, you must include an origin, destination, and API key. All other parameters are optional:
 ```javascript
-google_directions = require(‘google_directions’);
+var map = require('google_directions');
+
+var params = {
+	// REQUIRED
+	origin: "",
+	destination: "",
+	key: "",
+
+	// OPTIONAL
+	mode: "",
+	avoid: "",
+	language: "",
+	units: "",
+	region: "",
+};
 ```
-2. Run:
+**API**
+
 ```javascript
-node index
+// get the raw Google Directions API response as JSON object
+map.getDirections(params, function (err, data) {
+	if (err) {
+		console.log(err);
+		return 1;
+	}
+	console.log(data);
+});
+
+// get navigation steps in JSON object
+map.getDirectionSteps(params, function (err, steps){
+	if (err) {
+		console.log(err);
+		return 1;
+	}
+
+	// parse the JSON object of steps into a string output
+	var output="";
+	var stepCounter = 1;
+	steps.forEach(function(stepObj) {
+		var instruction = stepObj.html_instructions;
+		instruction = instruction.replace(/<[^>]*>/g, ""); //regex to remove html tags
+		var distance = stepObj.distance.text;
+		var duration = stepObj.duration.text;
+		output += "Step " + stepCounter + ": " + instruction + " ("+ distance +"/"+ duration+")\n";
+		stepCounter++;
+	});	
+	console.log(output);
+});
+
+// get total distance as string
+map.getDistance(params, function (err, data) {
+	if (err) {
+		console.log(err);
+		return 1;
+	}
+	console.log(data);
+});
+
+// get total duration as string
+map.getDuration(params, function (err, data) {
+	if (err) {
+		console.log(err);
+		return 1;
+	}
+	console.log(data);
+});
+
+// get the starting address as string
+map.getOriginAddress(params, function (err, data) {
+	if (err) {
+		console.log(err);
+		return 1;
+	}
+	console.log(data);
+});
+
+// get the destination address as string
+map.getDestinationAddress(params, function (err, data) {
+	if (err) {
+		console.log(err);
+		return 1;
+	}
+	console.log(data);
+});
 ```
+
+##Parameter Details
+* origin: staring location
+* destination: ending location
+* key: your Google-generated API key
+* mode: “driving” | “walking” | “bicycling”
+  * default: driving
+* avoid: "tolls" | "highways" | "ferries" | "indoor"
+  * default: none
+* language: https://developers.google.com/maps/faq#languagesupport
+  * default: based on origin country
+* units: "metric" | "imperial"
+  * default: based on origin country
+* region: https://developers.google.com/maps/documentation/directions/intro#RegionBiasing
+  * default: based on location of user
 
 ## History
 Still currently maintained and updated.
-* 0.1.0 Initial Release
+* 0.2.0 Initial Release
 
 ## Credits
 Google
+
 ## License
 MIT License

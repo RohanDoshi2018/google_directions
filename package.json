@@ -21,6 +21,7 @@
     "url": "https://github.com/RohanDoshi2018/google_directions/issues"
   },
   "dependencies": {
+    "query-string": "^2.4.0",
     "request": "^2.61.0"
   },
   "homepage": "https://github.com/RohanDoshi2018/google_directions#readme",
