@@ -1,0 +1,95 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@2.12.1
+3 info using node@v0.12.7
+4 verbose node symlink /usr/local/bin/node
+5 verbose publish [ '.' ]
+6 silly cache add args [ '.', null ]
+7 verbose cache add spec .
+8 silly cache add parsed spec { raw: '.',
+8 silly cache add   scope: null,
+8 silly cache add   name: null,
+8 silly cache add   rawSpec: '.',
+8 silly cache add   spec: '/Users/Rohan/Documents/workspaces/google_directions',
+8 silly cache add   type: 'directory' }
+9 verbose addLocalDirectory /Users/Rohan/.npm/google_directions/0.2.0/package.tgz not in flight; packing
+10 verbose tar pack [ '/Users/Rohan/.npm/google_directions/0.2.0/package.tgz',
+10 verbose tar pack   '/Users/Rohan/Documents/workspaces/google_directions' ]
+11 verbose tarball /Users/Rohan/.npm/google_directions/0.2.0/package.tgz
+12 verbose folder /Users/Rohan/Documents/workspaces/google_directions
+13 info prepublish google_directions@0.2.0
+14 verbose addLocalTarball adding from inside cache /Users/Rohan/.npm/google_directions/0.2.0/package.tgz
+15 silly cache afterAdd google_directions@0.2.0
+16 verbose afterAdd /Users/Rohan/.npm/google_directions/0.2.0/package/package.json not in flight; writing
+17 verbose afterAdd /Users/Rohan/.npm/google_directions/0.2.0/package/package.json written
+18 silly publish { name: 'google_directions',
+18 silly publish   version: '0.2.0',
+18 silly publish   description: 'Simplest way to call Google Directiosns API (Node Wrapper)',
+18 silly publish   main: 'index.js',
+18 silly publish   scripts: { test: 'console.log(\'Hello World\')' },
+18 silly publish   repository:
+18 silly publish    { type: 'git',
+18 silly publish      url: 'git://github.com/RohanDoshi2018/google_directions.git' },
+18 silly publish   keywords: [ 'google', 'google_directions', 'directions', 'maps' ],
+18 silly publish   author: { name: 'Rohan Doshi', email: 'rohandoshiga@gmail.com' },
+18 silly publish   bugs: { url: 'https://github.com/RohanDoshi2018/google_directions/issues' },
+18 silly publish   dependencies: { 'query-string': '^2.4.0', request: '^2.61.0' },
+18 silly publish   homepage: 'https://github.com/RohanDoshi2018/google_directions#readme',
+18 silly publish   devDependencies: {},
+18 silly publish   license: 'MIT',
+18 silly publish   readme: 'google_directions\n=========\n\nThis NPM Module is the simplest interface for asynchronously querying the Google Directions API (https://developers.google.com/maps/documentation/directions/intro) via Node. Find more information about the API here: https://developers.google.com/maps/documentation/directions/intro.\n\n## Installation\n```javascript\nnpm i google_directions\n```\n**Get a Google API Key**\n\nhttps://console.developers.google.com/flows/enableapi?apiid=directions_backend&keyType=SERVER_SIDE\n\n* Select/Create a Project\n* Enable Directions API\n* Generate a Key (See the Credentials Tab)\n\n## Usage\nInclude this. [Here are the parameter details](#parameters).\n```javascript\nvar map = require(\'google_directions\');\n\nvar params = {\n\t// REQUIRED\n\torigin: "",\n\tdestination: "",\n\tkey: "",\n\n\t// OPTIONAL\n\tmode: "",\n\tavoid: "",\n\tlanguage: "",\n\tunits: "",\n\tregion: "",\n};\n```\n#### API Methods\n\nThere are six main methods to choose from.\n\n**Raw Google Direction API Response (JSON):**\n```javascript\n// get the raw Google Directions API response as JSON object\nmap.getDirections(params, function (err, data) {\n\tif (err) {\n\t\tconsole.log(err);\n\t\treturn 1;\n\t}\n\tconsole.log(data);\n});\n```\n**Navigation Steps (JSON):**\n```javascript\n// get navigation steps as JSON object\nmap.getDirectionSteps(params, function (err, steps){\n\tif (err) {\n\t\tconsole.log(err);\n\t\treturn 1;\n\t}\n\n\t// parse the JSON object of steps into a string output\n\tvar output="";\n\tvar stepCounter = 1;\n\tsteps.forEach(function(stepObj) {\n\t\tvar instruction = stepObj.html_instructions;\n\t\tinstruction = instruction.replace(/<[^>]*>/g, ""); // regex to remove html tags\n\t\tvar distance = stepObj.distance.text;\n\t\tvar duration = stepObj.duration.text;\n\t\toutput += "Step " + stepCounter + ": " + instruction + " ("+ distance +"/"+ duration+")\\n";\n\t\tstepCounter++;\n\t});\t\n\tconsole.log(output);\n});\n```\n\n**Total Distance (String):**\n```javascript\n// get total distance as string\nmap.getDistance(params, function (err, data) {\n\tif (err) {\n\t\tconsole.log(err);\n\t\treturn 1;\n\t}\n\tconsole.log(data);\n});\n```\n\n**Total Duration (String):**\n```javascript\n// get total duration as string\nmap.getDuration(params, function (err, data) {\n\tif (err) {\n\t\tconsole.log(err);\n\t\treturn 1;\n\t}\n\tconsole.log(data);\n});\n```\n\n**Starting Address (String):**\n```javascript\n// get the starting address as string\nmap.getOriginAddress(params, function (err, data) {\n\tif (err) {\n\t\tconsole.log(err);\n\t\treturn 1;\n\t}\n\tconsole.log(data);\n});\n```\n\n**Destination Address (String):**\n```javascript\n// get the destination address as string\nmap.getDestinationAddress(params, function (err, data) {\n\tif (err) {\n\t\tconsole.log(err);\n\t\treturn 1;\n\t}\n\tconsole.log(data);\n});\n```\n\n## <a name=“parameters”></a>Parameters\n* origin: staring location\n* destination: ending location\n* key: your Google-generated API key\n* mode: “driving” | “walking” | “bicycling”\n  * default: driving\n* avoid: "tolls" | "highways" | "ferries" | "indoor"\n  * default: none\n* language: https://developers.google.com/maps/faq#languagesupport\n  * default: based on origin country\n* units: "metric" | "imperial"\n  * default: based on origin country\n* region: https://developers.google.com/maps/documentation/directions/intro#RegionBiasing\n  * default: based on location of user\n\n## History\nStill currently maintained and updated.\n* 0.2.0 Initial Release\n\n## Credits\nGoogle\n\n## License\nMIT License\n',
+18 silly publish   readmeFilename: 'README.md',
+18 silly publish   gitHead: '3f61726659552aaf405b1251164d99c526439a40',
+18 silly publish   _id: 'google_directions@0.2.0',
+18 silly publish   _shasum: '15e2f4d3eaadc67a84099f7e4cf0caf9ec669541',
+18 silly publish   _from: '.' }
+19 verbose getPublishConfig undefined
+20 silly mapToRegistry name google_directions
+21 silly mapToRegistry using default registry
+22 silly mapToRegistry registry https://registry.npmjs.org/
+23 silly mapToRegistry uri https://registry.npmjs.org/google_directions
+24 verbose publish registryBase https://registry.npmjs.org/
+25 silly publish uploading /Users/Rohan/.npm/google_directions/0.2.0/package.tgz
+26 verbose request uri https://registry.npmjs.org/google_directions
+27 verbose request sending authorization for write operation
+28 info attempt registry request try #1 at 01:53:06
+29 verbose request using bearer token for auth
+30 verbose request id e5609c7028dbf0d8
+31 http request PUT https://registry.npmjs.org/google_directions
+32 http 403 https://registry.npmjs.org/google_directions
+33 verbose headers { 'content-type': 'application/json',
+33 verbose headers   'cache-control': 'max-age=60',
+33 verbose headers   'content-length': '95',
+33 verbose headers   'accept-ranges': 'bytes',
+33 verbose headers   date: 'Sun, 30 Aug 2015 05:53:07 GMT',
+33 verbose headers   via: '1.1 varnish',
+33 verbose headers   connection: 'keep-alive',
+33 verbose headers   'x-served-by': 'cache-jfk1027-JFK',
+33 verbose headers   'x-cache': 'MISS',
+33 verbose headers   'x-cache-hits': '0',
+33 verbose headers   'x-timer': 'S1440913987.112377,VS0,VE700' }
+34 verbose request invalidating /Users/Rohan/.npm/registry.npmjs.org/google_directions on PUT
+35 error publish Failed PUT 403
+36 verbose stack Error: "You cannot publish over the previously published version 0.2.0." : google_directions
+36 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:247:14)
+36 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:170:14)
+36 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:197:22)
+36 verbose stack     at Request.emit (events.js:110:17)
+36 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1050:14)
+36 verbose stack     at Request.emit (events.js:129:20)
+36 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:996:12)
+36 verbose stack     at IncomingMessage.emit (events.js:129:20)
+36 verbose stack     at _stream_readable.js:908:16
+36 verbose stack     at process._tickCallback (node.js:355:11)
+37 verbose statusCode 403
+38 verbose pkgid google_directions
+39 verbose cwd /Users/Rohan/Documents/workspaces/google_directions
+40 error Darwin 14.4.0
+41 error argv "node" "/usr/local/bin/npm" "publish"
+42 error node v0.12.7
+43 error npm  v2.12.1
+44 error code E403
+45 error "You cannot publish over the previously published version 0.2.0." : google_directions
+46 error If you need help, you may report this error at:
+46 error     <https://github.com/npm/npm/issues>
+47 verbose exit [ 1, true ]
