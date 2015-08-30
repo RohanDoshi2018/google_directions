@@ -1,6 +1,6 @@
 {
   "name": "google_directions",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Simplest way to call Google Directiosns API (Node Wrapper)",
   "main": "index.js",
   "scripts": {
