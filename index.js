@@ -68,6 +68,22 @@ module.exports = {
 		});
 
 	},
+	getDistanceInMeters: function(params, cb) {
+		// validate inputs to npm module
+		var validateErr = validateInput(params, cb);
+		if (validateErr) {
+			return cb(validateErr);
+		}
+
+		// build query URL
+		var url = "https://maps.googleapis.com/maps/api/directions/json?" + qs.stringify(params);
+
+		// make request to google server
+		request(url, function(err, res, body) {
+			return cb(err, JSON.parse(body).routes[0].legs[0].distance.value);
+		});
+
+	},
 	getDuration: function(params, cb) {
 		// validate inputs to npm module
 		var validateErr = validateInput(params, cb);
